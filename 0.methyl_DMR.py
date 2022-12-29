@@ -6,10 +6,10 @@ def STEP1_METHYL(sample,REF):
     os.system('/BIO1/Bismark-master/deduplicate_bismark --bam '+sample+'_R1_val_1_bismark_bt2_pe.bam')
     os.system('/BIO1/Bismark-master/bismark_methylation_extractor '+sample+'_R1_val_1_bismark_bt2_pe.deduplicated.bam --bedGraph')
 
-def STEP2_DMR(PATH,Group1,Group2,Group3,in2_T,in1_N,h2_T,h1_N):
+def STEP2_DMR(PATH,Group1,Group2,in2_T,in1_N,h2_T,h1_N):
     #2-1. Convert .bedgraph
     #1.Remove first line 2. Print not the "KI" lines 3. Add "chr" 
-    G = [Group1,Group2,Group3]
+    G = [Group1,Group2]
     for k in G:
         print(k)
         file_list = os.listdir(PATH+k)
@@ -26,9 +26,9 @@ def STEP2_DMR(PATH,Group1,Group2,Group3,in2_T,in1_N,h2_T,h1_N):
             os.system('mv *chr.sort.bedGraph '+PATH+k)
     
     #2-2. Generate metilene input files
-    os.system('cp '+PATH+Group1+'/*_bismark.dedup.chr.sort.bedGraph /BIO6/REAL_ANALYSIS/2.metilene/')
-    os.system('cp '+PATH+Group2+'/*_bismark.dedup.chr.sort.bedGraph /BIO6/REAL_ANALYSIS/2.metilene/')
-    os.chdir('/BIO6/REAL_ANALYSIS/2.metilene/')
+    os.system('cp '+PATH+Group1+'/*_bismark.dedup.chr.sort.bedGraph /BIO6/2.metilene/')
+    os.system('cp '+PATH+Group2+'/*_bismark.dedup.chr.sort.bedGraph /BIO6/2.metilene/')
+    os.chdir('/BIO6/2.metilene/')
     os.system('perl /BIO1/metilene_v0.2-8/metilene_input.pl --in1 '+in2_T+' --in2 '+in1_N+' --h1 '+Group1+' --h2 '+Group2+' --out metilene_'+Group1+'_'+Group2+'.input')
 
     #fpout = open('head.txt','w')
@@ -60,9 +60,9 @@ def main():
 main()
 
 def main2():
-    PATH,Group1,Group2,Group3 = '/BIO6/REAL_ANALYSIS/bedGraph/','Tumor','Normal','WBC'
+    PATH,Group1,Group2 = '/BIO6/bedGraph/','Tumor','Normal'
     co = 0
-    T,N,H =[],[],[]
+    T,N =[],[]
     fp1 = open('mapfile.txt','r')
     fp1.readline()
     for line in fp1:
@@ -72,18 +72,12 @@ def main2():
             T.append(s)
         elif line_temp[6] == 'Normal Colorectal Mucosa':
             s1 = line_temp[2].split('_R1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz')[0]
-            N.append(s1)
-        elif line_temp[6] == 'Healthy Control WBC':
-            s2 = line_temp[2].split('_R1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz')[0]
-            H.append(s2)
+           N.append(s1)       
 #    print (len(T))
     h2_T =  "\t".join(map(lambda z: z+"_T", T)) #header #49624-104_Tumor_T
     in2_T =  ",".join(map(lambda z: z+"_bismark.dedup.chr.sort.bedGraph", T))   #input #49624-104_Tumor_bismark.dedup.chr.sort.bedGraph
 #    print (len(N))
     h1_N =  "\t".join(map(lambda z: z+"_N", N))
     in1_N =  ",".join(map(lambda z: z+"_bismark.dedup.chr.sort.bedGraph", N))
-#    print (len(H))
-    h3_H =  "\t".join(map(lambda z: z+"_H", H))
-    in3_H =  ",".join(map(lambda z: z+"_bismark.dedup.chr.sort.bedGraph", H))
-    STEP2_DMR(PATH,Group1,Group2,Group3,in2_T,in1_N,h2_T,h1_N)
+    STEP2_DMR(PATH,Group1,Group2,in2_T,in1_N,h2_T,h1_N)
 main2()
