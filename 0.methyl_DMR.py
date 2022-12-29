@@ -74,7 +74,7 @@ def main2():
             s1 = line_temp[2].split('_R1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz')[0]
            N.append(s1)       
 #    print (len(T))
-    h2_T =  "\t".join(map(lambda z: z+"_T", T)) #header #49624-104_Tumor_T
+    h2_T =  "\t".join(map(lambda z: z+"_T", T)) #header 
     in2_T =  ",".join(map(lambda z: z+"_bismark.dedup.chr.sort.bedGraph", T))   #input 
 #    print (len(N))
     h1_N =  "\t".join(map(lambda z: z+"_N", N))
