@@ -66,7 +66,7 @@ def main2():
     fp1 = open('mapfile.txt','r')
     fp1.readline()
     for line in fp1:
-        line_temp = line[:-1].split('\t')   #['1', '1. 49624-104 (Normal)', '49624-104_Normal_R1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz', '32', 'Female', 'White', 'Normal Colorectal Mucosa']
+        line_temp = line[:-1].split('\t')   
         if line_temp[6] == 'Tumor':
             s = line_temp[2].split('_R1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz')[0]
             T.append(s)
@@ -75,7 +75,7 @@ def main2():
            N.append(s1)       
 #    print (len(T))
     h2_T =  "\t".join(map(lambda z: z+"_T", T)) #header #49624-104_Tumor_T
-    in2_T =  ",".join(map(lambda z: z+"_bismark.dedup.chr.sort.bedGraph", T))   #input #49624-104_Tumor_bismark.dedup.chr.sort.bedGraph
+    in2_T =  ",".join(map(lambda z: z+"_bismark.dedup.chr.sort.bedGraph", T))   #input 
 #    print (len(N))
     h1_N =  "\t".join(map(lambda z: z+"_N", N))
     in1_N =  ",".join(map(lambda z: z+"_bismark.dedup.chr.sort.bedGraph", N))
