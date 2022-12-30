@@ -19,6 +19,10 @@ STEP1_ChIPseeker <- function(){
         plotAnnoPie(peakAnno,cex =1.1) #legend size
         peak.anno = as.data.frame(peakAnno)
         write.table(peak.anno, file='metilene_Tumor_Normal.filter_qval.0.05.anno.txt',row.names=FALSE,quote=FALSE,sep='\t')
+	
+	data <- read.delim('metilene_Tumor_Normal.filter_qval.0.05.head.out',header=T)
+        a <- cbind(data,peak.anno)
+        write.table(a, file='metilene_Tumor_Normal.filter_qval.0.05.anno2.txt',row.names=FALSE,quote=FALSE,sep='\t')
 }
 #STEP1_rGREAT()
 STEP1_ChIPseeker()
