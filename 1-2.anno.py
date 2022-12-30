@@ -1,7 +1,7 @@
 import string,sys,os
 
 def state4():
-    os.chdir('/BIO6/REAL_ANALYSIS/2.metilene')
+    os.chdir('/BIO6/2.metilene')
     fp = open('metilene_Tumor_Normal.filter_qval.0.05.anno.txt','r')
     fpout = open('metilene_Tumor_Normal.filter_qval.0.05.anno2.txt','w')
     hd = fp.readline()
