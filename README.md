@@ -1,7 +1,7 @@
 conda create -n ChIPseeker
 
-#conda info --envs
+$conda info --envs
 
-#source /home/hykim/anaconda3/etc/profile.d/conda.sh
+$source /home/hykim/anaconda3/etc/profile.d/conda.sh
 
 conda activate ChIPseeker
