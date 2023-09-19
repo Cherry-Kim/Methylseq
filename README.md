@@ -1,4 +1,4 @@
-conda create -n ChIPseeker 
+conda create -n ChIPseeker
 
 #conda info --envs
 
