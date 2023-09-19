@@ -14,6 +14,10 @@ STEP1_ChIPseeker <- function(){
         txdb = TxDb.Hsapiens.UCSC.hg38.knownGene
 
 	bed = read.table("metilene_Tumor_Normal.filter_qval.0.05.rGREAT.input.bed", header=T)
+	#head(bed)
+  	# chr   start     end
+	#1 chr1  205339  205340
+
         peaks.gr = makeGRangesFromDataFrame(bed, keep.extra.columns=TRUE)
         peakAnno  = annotatePeak(peaks.gr,tssRegion=c(-3000,3000), TxDb=txdb, annoDb="org.Hs.eg.db")
         plotAnnoPie(peakAnno,cex =1.1) #legend size
