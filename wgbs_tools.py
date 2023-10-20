@@ -14,12 +14,12 @@ def step1():
             region.append(line.strip())
     fp.close()
 
-    with open('GSM6810004','a') as output_file:
+    with open('GSM6810004.txt','a') as output_file:
         for i in region:
             co += 1
             print("Region",co," ",i)
 
-            command = "/BIO5/wgbs_tools/wgbstools vis GSM6810003_CNVS-NORM-110000263-cfDNA-WGBS-Rep1.pat.gz -r "+i
+            command = "/BIO5/wgbs_tools/wgbstools vis "+sample+" -r "+i
             process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = process.communicate()
 
