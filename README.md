@@ -10,4 +10,6 @@ conda activate ChIPseeker
 
 
 conda create -n tpot
+pip install tpot
+tpot --version
 
