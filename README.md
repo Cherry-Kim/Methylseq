@@ -15,7 +15,7 @@ pip install tpot
 
 tpot --version
 
-Optical bio-sensing of DNA methylation analysis: an overview of recent progress and future prospects
+## Optical bio-sensing of DNA methylation analysis: an overview of recent progress and future prospects
  ![image](https://github.com/Cherry-Kim/Methylseq/assets/64776690/6bf5b60d-cc2c-42fe-b986-62e372558652)
 
 
