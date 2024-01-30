@@ -15,6 +15,8 @@ pip install tpot
 
 tpot --version
 
+# /BIO1/Bismark-master/bismark_genome_preparation --bowtie2 ./ #Ref.fa directory
+
 ### Optical bio-sensing of DNA methylation analysis: an overview of recent progress and future prospects
  ![image](https://github.com/Cherry-Kim/Methylseq/assets/64776690/6bf5b60d-cc2c-42fe-b986-62e372558652)
 
