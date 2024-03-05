@@ -1,6 +1,11 @@
-#https://github.com/nloyfer/wgbs_tools
-#Genome configuration
-#wgbstools init_genome hg19
+#----------------------------------
+### Installation https://github.com/nloyfer/wgbs_tools 
+git clone https://github.com/nloyfer/wgbs_tools.git
+cd wgbs_tools
+python setup.py
+### Genome configuration
+./wgbstools init_genome hg19
+#----------------------------------
 
 import string,sys,os
 import subprocess
