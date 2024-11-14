@@ -13,6 +13,7 @@ STEP1_ChIPseeker <- function(){
         library(TxDb.Hsapiens.UCSC.hg38.knownGene)
         txdb = TxDb.Hsapiens.UCSC.hg38.knownGene
 
+	#awk '{print $1 "\t" $2-1 "\t" $2}' sig_T30N20W1_DMRs_eliminate_marker_GSE186458H1_7H1_CRC16_cfDNA_intersect.txt > anno.input.bed
 	bed = read.table("metilene_Tumor_Normal.filter_qval.0.05.rGREAT.input.bed", header=T)
 	#head(bed)
   	# chr   start     end
