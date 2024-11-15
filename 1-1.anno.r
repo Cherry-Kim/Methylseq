@@ -25,8 +25,8 @@ STEP1_ChIPseeker <- function(){
         peak.anno = as.data.frame(peakAnno)
         write.table(peak.anno, file='metilene_Tumor_Normal.filter_qval.0.05.anno.txt',row.names=FALSE,quote=FALSE,sep='\t')
 }
-#STEP1_rGREAT()
-STEP1_ChIPseeker()
+
+STEP3_ChIPseeker<- function(){
 	#python 1-2.anno.py -> 
 	data <- read.delim('metilene_Tumor_Normal.filter_qval.0.05.head.out',header=T)
 	data2 <- read.delim('metilene_Tumor_Normal.filter_qval.0.05.anno2.txt',header=T)
