@@ -26,7 +26,7 @@ def STEP2(sample):
 
 def STEP3(REF, sample):
     #Generating Pileup for a Single Sample
-    os.system('/BIO1/biscuit/biscuit pileup -@ 96 -o '+sample+'_pileup.vcf '+REF+' '+sample+'.bam && bgzip -@ 96 '+sample+'_pileup.vcf && tabix -p vcf '+sample+'_pileup.vcf.gz')
+    os.system('/BIO1/biscuit/biscuit pileup -@ 96 -o '+sample+'_pileup.vcf '+REF+' '+sample+'.dedup.bam && bgzip -@ 96 '+sample+'_pileup.vcf && tabix -p vcf '+sample+'_pileup.vcf.gz')
 #/BIO1/biscuit/biscuit pileup -@ 96 -o test.vcf /BIO1/REF/Homo_sapiens.GRCh38.dna.primary_assembly.fa SRR4031769.bam && bgzip -@ 96 test.vcf && tabix -p vcf test.vcf.gz
 
     # Extract DNA methylation into BED format
